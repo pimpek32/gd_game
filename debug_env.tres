@@ -1,0 +1,20 @@
+[gd_resource type="Environment" load_steps=2 format=2]
+
+[sub_resource type="ProceduralSky" id=1]
+sun_latitude = 15.73
+sun_longitude = -132.79
+texture_size = 0
+
+[resource]
+background_mode = 2
+background_sky = SubResource( 1 )
+ambient_light_color = Color( 0.419608, 0.419608, 0.419608, 1 )
+ambient_light_sky_contribution = 0.0
+fog_depth_begin = 0.0
+fog_depth_end = 250.0
+fog_depth_curve = 0.784584
+fog_transmit_enabled = true
+fog_height_curve = 0.840896
+glow_enabled = true
+adjustment_contrast = 1.13
+adjustment_saturation = 0.74
