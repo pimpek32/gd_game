@@ -67,10 +67,16 @@ public override void _PhysicsProcess(float delta)
 		_vel.x = Mathf.Clamp(_vel.x, -maxSpeed, maxSpeed);
 		_vel.z = Mathf.Clamp(_vel.z, -maxSpeed, maxSpeed);
 		
+		_vel.z = Mathf.Clamp(_vel.z, -maxSpeed, maxSpeed);
+		
 		_vel.x -= _vel.x  / Deacceleration;
 		_vel.z -= _vel.z  / Deacceleration;
 
 		MoveAndSlide(_vel, new Vector3(0,1,0));
+		if(IsOnFloor())
+		{
+		_vel.y -= _vel.y  / Deacceleration;
+		}
 		inputMovementVector = new Vector2(0,0);
 }
 }
