@@ -39,7 +39,7 @@ public class PlayerMovement : KinematicBody
 			anim.Travel("idle");
 		}
 		Vector3 lerpVec = new Vector3(-_vel.x + Transform.origin.x, Transform.origin.y, -_vel.z + Transform.origin.z);
-		
+		if(lerpVec.DistanceTo(Transform.origin) > 0.1f)
 		mesh.LookAt(lerpVec, new Vector3(0,1,0));
 		
 		inputMovementVector = inputMovementVector.Normalized();
