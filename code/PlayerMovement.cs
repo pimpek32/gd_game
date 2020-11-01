@@ -3,7 +3,7 @@ using System;
 
 public class PlayerMovement : KinematicBody
 {
-	private Vector3 _vel = new Vector3();
+	public Vector3 _vel = new Vector3();
 	private Vector2 inputMovementVector = new Vector2();
 	private Spatial mesh;
 	private AnimationTree animationTree;
