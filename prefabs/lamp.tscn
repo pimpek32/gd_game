@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gfx/model/env/lamp/lamp.tres" type="Material" id=1]
+[ext_resource path="res://gfx/model/env/lamp/lamp.obj" type="ArrayMesh" id=2]
+
+[node name="lamp" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 4, 6 )
+
+[node name="lamp" type="MeshInstance" parent="."]
+use_in_baked_light = true
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 1 )
+
+[node name="OmniLight" type="OmniLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.09064, 0 )
+light_color = Color( 1, 0.827451, 0.643137, 1 )
+light_energy = 2.0
+light_indirect_energy = 2.0
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 16.0
+omni_attenuation = 3.605
