@@ -1,4 +1,10 @@
-[gd_resource type="AnimationNodeStateMachine" load_steps=5 format=2]
+[gd_resource type="AnimationNodeStateMachine" load_steps=15 format=2]
+
+[sub_resource type="AnimationNodeAnimation" id=5]
+animation = "Punch"
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "Punch2"
 
 [sub_resource type="AnimationNodeAnimation" id=1]
 animation = "Idle"
@@ -12,10 +18,39 @@ xfade_time = 0.2
 [sub_resource type="AnimationNodeStateMachineTransition" id=4]
 xfade_time = 0.4
 
+[sub_resource type="AnimationNodeStateMachineTransition" id=7]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=8]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=9]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+xfade_time = 0.1
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+xfade_time = 0.1
+
 [resource]
+states/Punch/node = SubResource( 5 )
+states/Punch/position = Vector2( 332, 219 )
+states/Punch2/node = SubResource( 6 )
+states/Punch2/position = Vector2( 347, -115 )
 states/idle/node = SubResource( 1 )
 states/idle/position = Vector2( 154, 63 )
 states/move/node = SubResource( 2 )
-states/move/position = Vector2( 505, 63 )
-transitions = [ "idle", "move", SubResource( 3 ), "move", "idle", SubResource( 4 ) ]
+states/move/position = Vector2( 519, 68 )
+transitions = [ "idle", "move", SubResource( 3 ), "move", "idle", SubResource( 4 ), "idle", "Punch", SubResource( 7 ), "move", "Punch", SubResource( 8 ), "idle", "Punch2", SubResource( 9 ), "Punch2", "move", SubResource( 10 ), "move", "Punch2", SubResource( 11 ), "Punch2", "idle", SubResource( 12 ), "Punch", "idle", SubResource( 13 ), "Punch", "move", SubResource( 14 ) ]
 start_node = "idle"
+graph_offset = Vector2( -229, -90 )
