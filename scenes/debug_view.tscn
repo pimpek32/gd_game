@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/kloetzle_blei.jpg" type="Texture" id=1]
+[ext_resource path="res://gfx/model/player/pim_gun.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://gfx/model/player/pim_gun.tres" type="Material" id=3]
+
+[sub_resource type="PanoramaSky" id=1]
+panorama = ExtResource( 1 )
+
+[sub_resource type="Environment" id=2]
+background_mode = 2
+background_sky = SubResource( 1 )
+background_energy = 0.75
+glow_enabled = true
+adjustment_enabled = true
+adjustment_brightness = 1.25
+adjustment_contrast = 1.25
+adjustment_saturation = 0.87
+
+[node name="Spatial" type="Spatial"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 2 )
+
+[node name="pim_gun" type="MeshInstance" parent="."]
+mesh = ExtResource( 2 )
+material/0 = ExtResource( 3 )
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 0.648492, -0.236457, 0.723565, -0.389858, 0.713242, 0.582492, -0.653812, -0.659829, 0.370347, 0, 0, 0 )
+light_energy = 0.5
+shadow_enabled = true

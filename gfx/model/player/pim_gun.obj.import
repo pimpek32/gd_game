@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/pim_gun.obj-010434a6d583727f83a6f6eca7865fe1.mesh"
+
+[deps]
+
+files=[ "res://.import/pim_gun.obj-010434a6d583727f83a6f6eca7865fe1.mesh" ]
+
+source_file="res://gfx/model/player/pim_gun.obj"
+dest_files=[ "res://.import/pim_gun.obj-010434a6d583727f83a6f6eca7865fe1.mesh", "res://.import/pim_gun.obj-010434a6d583727f83a6f6eca7865fe1.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true
