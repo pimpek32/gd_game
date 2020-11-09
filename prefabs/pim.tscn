@@ -266,6 +266,7 @@ tracks/23/keys = PoolRealArray( 0, 1, 0, -8, 0, -8.14603e-08, 0, 0, 1, 1, 1, 1, 
 [sub_resource type="Animation" id=4]
 resource_name = "Move"
 length = 0.683333
+loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Humanoid_Rig/Skeleton:head")
 tracks/0/interp = 1
@@ -908,7 +909,7 @@ mesh = SubResource( 1 )
 skin = SubResource( 2 )
 material/0 = null
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="animator" type="AnimationPlayer" parent="."]
 anims/Idle = SubResource( 3 )
 anims/Move = SubResource( 4 )
 anims/Punch = SubResource( 5 )
@@ -916,6 +917,6 @@ anims/Punch2 = SubResource( 6 )
 
 [node name="anim" type="AnimationTree" parent="."]
 tree_root = ExtResource( 2 )
-anim_player = NodePath("../AnimationPlayer")
+anim_player = NodePath("../animator")
 active = true
 parameters/playback = SubResource( 7 )
