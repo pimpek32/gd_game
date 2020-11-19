@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="code\CameraMovement.cs" />
+    <Compile Include="code\GameUI.cs" />
     <Compile Include="code\PlayerCombat.cs" />
     <Compile Include="code\PlayerMovement.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
