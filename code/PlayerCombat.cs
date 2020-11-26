@@ -14,6 +14,8 @@ public class PlayerCombat : Spatial
 
 	[Export]
 	public float CoolDown;
+	[Export]
+	public float punchForce;
 	private float cdown;
 	private bool rand = true;
 	
@@ -37,7 +39,7 @@ public class PlayerCombat : Spatial
 	{
 		if(Input.IsActionJustReleased("combat_melee") && CoolDown < 0)
 		{
-
+			
 		if(hit.IsColliding())
 		{
 
@@ -55,9 +57,8 @@ public class PlayerCombat : Spatial
 	}
 	public override void _PhysicsProcess(float delta)
 	{
-		//dir = parentObj._vel;
-		//var spaceState = GetWorld().DirectSpaceState;
-		//var result = spaceState.IntersectRay(Transform.origin, dir);
+		if(Input.IsActionJustReleased("combat_melee") && CoolDown < 0)
+		parentObj.AddForwardForce(delta, punchForce);
 		
 		
 	}

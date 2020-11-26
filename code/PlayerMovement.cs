@@ -1,13 +1,15 @@
 using Godot;
 using System;
 
-public class PlayerMovement : KinematicBody
+public class PlayerMovement : RigidBody
 {
 	public Vector3 _vel = new Vector3();
 	private Vector2 inputMovementVector = new Vector2();
 	private Spatial mesh;
 	private AnimationTree animationTree;
 	private AnimationNodeStateMachinePlayback anim;
+
+	
 	[Export]
 	float Acceleration = 500; 
 	
@@ -19,6 +21,7 @@ public class PlayerMovement : KinematicBody
 	[Export]
 
 	public float Deacceleration = 11.0f;
+	private Vector3 nvel;
 
 	public override void _Ready()
 	{
@@ -51,17 +54,16 @@ public class PlayerMovement : KinematicBody
 			inputMovementVector.x -= 1;
 		if (Input.IsActionPressed("movement_right"))
 			inputMovementVector.x += 1;
-		
+		GD.Print(LinearVelocity);
 		/*mesh.LookAt(new Vector3(Mathf.Lerp(lerpVec.x, -inputMovementVector.x + Transform.origin.x, delta * rotSpeed),
 		Transform.origin.y,
 		Mathf.Lerp(lerpVec.z, -inputMovementVector.y + Transform.origin.z, delta * rotSpeed)), new Vector3(0,1,0));*/
 	}
 public override void _PhysicsProcess(float delta)
 {
-		Vector3 nvel;
+		
 		nvel.x = inputMovementVector.x * delta * Acceleration;
 		nvel.z = inputMovementVector.y * delta * Acceleration;
-		nvel.y = -10 * delta; 
 		_vel += nvel;
 		
 		_vel.x = Mathf.Clamp(_vel.x, -maxSpeed, maxSpeed);
@@ -71,12 +73,15 @@ public override void _PhysicsProcess(float delta)
 		
 		_vel.x -= _vel.x  / Deacceleration;
 		_vel.z -= _vel.z  / Deacceleration;
-
-		MoveAndSlide(_vel, new Vector3(0,1,0));
-		if(IsOnFloor())
-		{
-		_vel.y -= _vel.y  / Deacceleration;
-		}
+		
+		LinearVelocity = _vel;
+		
 		inputMovementVector = new Vector2(0,0);
 }
+
+	public void AddForwardForce(float delta, float scale)
+	{
+	_vel.x += inputMovementVector.x * delta*scale;
+	_vel.z  += inputMovementVector.y * delta*scale;
+	}
 }
