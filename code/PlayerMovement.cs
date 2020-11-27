@@ -23,6 +23,7 @@ public class PlayerMovement : RigidBody
 	public float Deacceleration = 11.0f;
 	private Vector3 nvel;
 
+		Vector3 clamped = new Vector3(0,0,0);
 	public override void _Ready()
 	{
 		mesh = GetNode<Spatial>("mesh");
@@ -65,16 +66,13 @@ public override void _PhysicsProcess(float delta)
 		nvel.x = inputMovementVector.x * delta * Acceleration;
 		nvel.z = inputMovementVector.y * delta * Acceleration;
 		_vel += nvel;
+		//ApplyCentralImpulse(new Vector3(Mathf.Clamp(nvel.x, -maxSpeed, maxSpeed), 0, Mathf.Clamp(nvel.z, -maxSpeed, maxSpeed)));
+				
+		clamped = new Vector3(Mathf.Clamp(nvel.x, -maxSpeed, maxSpeed), LinearVelocity.y, (Mathf.Clamp(nvel.z, -maxSpeed, maxSpeed)));
+//		Vector3 clamped = new Vector3(0, LinearVelocity.y, 0);
+
 		
-		_vel.x = Mathf.Clamp(_vel.x, -maxSpeed, maxSpeed);
-		_vel.z = Mathf.Clamp(_vel.z, -maxSpeed, maxSpeed);
-		
-		_vel.z = Mathf.Clamp(_vel.z, -maxSpeed, maxSpeed);
-		
-		_vel.x -= _vel.x  / Deacceleration;
-		_vel.z -= _vel.z  / Deacceleration;
-		
-		LinearVelocity = _vel;
+		LinearVelocity = clamped;
 		
 		inputMovementVector = new Vector2(0,0);
 }
